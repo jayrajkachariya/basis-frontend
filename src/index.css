@@ -1,0 +1,694 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/*  Here, I don't want to use bootstrap and increase bundle size.
+    However, i like it's concepts.
+    So, i am inheriting some of its css formats here, exactly what we would need the most.
+    Only global styles will be in this file rest css styles will be followed in separate [component-name].css file itself.
+*/
+
+a {
+    text-decoration: none;
+    color: inherit !important;
+}
+
+:root {
+
+    /*Global color variables...*/
+    --color-primary: #6b34de;
+    /*--color-primary: #00a87e;*/
+    --color-secondary: #fbd281;
+    --color-light: #fff;
+    --color-dark: #171717;
+    --color-grey: #c1c1c1;
+    --color-danger: #e4521c;
+    --color-success: #369608;
+    --color-transparent: transparent;
+
+    /*Global font weight variables...*/
+    --weight-high: 900;
+    --weight-normal: normal;
+    --weight-low: 400;
+
+    /*Global font-sizes variables, declaring as [size] only, instead of [font-size]... */
+    --size-large: 1.25rem;
+    --size-medium: 1rem;
+    --size-small: .8rem;
+
+    /*Global font-radius size variables...*/
+    --rounded-lightly: 5px;
+    --rounded-highly: 10px;
+    --rounded-full: 50%;
+
+    /* Letter spacing */
+    --letter-spacing-high: 1px;
+    --letter-spacing-medium: .8px;
+    --letter-spacing-low: .5px;
+
+    /*Global box-shadow variables*/
+    --box-shadow: 0 1px 4px #eae6f5;
+
+    /*Global text align variables... */
+    --text-center: center;
+    --text-left: left;
+    --text-right: right;
+
+    /*Global Outline variable...*/
+    --outline-none: none;
+
+    /*Global flex, box and other variables...*/
+    --flex: flex;
+    --block: block;
+    --flex-1: 1;
+    --flex-2: 2;
+    --flex-3: 3;
+    --flex-4: 4;
+    --flex-5: 5;
+    --flex-6: 6;
+    --flex-7: 7;
+
+    --rem-0-1: .1rem; /*Global variable .1rem*/
+    --rem-0-2: .2rem; /*Global variable .2rem*/
+    --rem-0-3: .3rem; /*Global variable .3rem*/
+    --rem-0-4: .4rem; /*Global variable .4rem*/
+    --rem-0-5: .5rem; /*Global variable .5rem*/
+    --rem-0-6: .6rem; /*Global variable .6rem*/
+    --rem-0-7: .7rem; /*Global variable .7rem*/
+    --rem-0-8: .8rem; /*Global variable .8rem*/
+    --rem-0-9: .9rem; /*Global variable .9rem*/
+    --rem-1-0: 1rem; /*Global variable .9rem*/
+    --rem-1-5: 1.5rem; /*Global variable .9rem*/
+    --rem-2-0: 2rem; /*Global variable .9rem*/
+    --rem-2-5: 2.5rem; /*Global variable .9rem*/
+    --rem-3-0: 3rem; /*Global variable .9rem*/
+
+    --p-1: 1rem; /*Global padding variable 1rem*/
+    --p-2: 1.5rem; /*Global padding variable 1.5rem*/
+    --p-3: 2rem; /*Global padding variable 2rem*/
+    --p-4: 2.5rem; /*Global padding variable 2.5rem*/
+    --p-5: 3rem; /*Global padding variable 3rem*/
+
+    --m-1: 1rem; /*Global margin variable 1rem*/
+    --m-2: 1.5rem; /*Global margin variable 1.5rem*/
+    --m-3: 2rem; /*Global margin variable 2rem*/
+    --m-4: 2.5rem; /*Global margin variable 2.5rem*/
+    --m-5: 3rem; /*Global margin variable 3rem*/
+
+    /* Global border...*/
+    --border: 1px solid;
+
+    /* Global Transition*/
+    --transition: all ease-out;
+    --transition-fast: .2s;
+    --transition-slow: .5s;
+}
+
+/* Height 100vh */
+.h-100 {
+    height: 100vh;
+}
+
+/* Width 100vw */
+.w-100 {
+    width: 100vw;
+}
+
+/* Height 100% */
+.h-100-p {
+    height: 100%;
+}
+
+/* Width 100% */
+.w-100-p {
+    width: 100%;
+}
+
+/* Position..*/
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.top {
+    top: var(--rem-1-0);
+}
+
+.right {
+    right: var(--rem-1-0);
+}
+
+.bottom {
+    bottom: var(--rem-1-0);
+}
+
+.left {
+    left: var(--rem-1-0);
+}
+
+/* Letter spacing */
+.letter-spacing-high {
+    letter-spacing: var(--letter-spacing-high);
+}
+
+.letter-spacing-medium {
+    letter-spacing: var(--letter-spacing-medium);
+}
+
+.letter-spacing-low {
+    letter-spacing: var(--letter-spacing-low);
+}
+
+/* Text transform */
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+/* Normal Borders... */
+.border {
+    border: var(--border);
+    border-color: var(--color-dark); /* Here this should not be here as we want to add standalone border-color class well but in-case of missed this will work as fallback border color*/
+}
+
+/* Border Colors... */
+
+.border-transparent {
+    border-color: var(--color-transparent) !important;
+}
+
+.border-primary {
+    border-color: var(--color-primary) !important;
+}
+
+.border-secondary {
+    border-color: var(--color-secondary) !important;
+}
+
+.border-light {
+    border-color: var(--color-light) !important;
+}
+
+.border-dark {
+    border-color: var(--color-dark) !important;
+}
+
+.border-grey {
+    border-color: var(--color-grey) !important;
+}
+
+.border-danger {
+    border-color: var(--color-danger) !important;
+}
+
+.border-success {
+    border-color: var(--color-success) !important;
+}
+
+
+/* { Border radius === rounded } | order: full > highly > lightly */
+.rounded-highly {
+    border-radius: var(--rounded-highly);
+}
+
+.rounded-full {
+    border-radius: var(--rounded-full);
+}
+
+.rounded-lightly {
+    border-radius: var(--rounded-lightly);
+}
+
+
+/*  Box shadows... Defining only one box-shadow so UX can be static.
+    Giving different depth of element via box-shadow doesn't feel good.
+*/
+.box-shadow {
+    box-shadow: var(--box-shadow);
+}
+
+/* Global text-aligns classes...*/
+.text-center {
+    text-align: var(--text-center);
+}
+
+.text-right {
+    text-align: var(--text-right);
+}
+
+.text-left {
+    text-align: var(--text-left);
+}
+
+
+/* Global Font Weight classes... */
+.font-weight-high {
+    font-weight: var(--weight-high);
+}
+
+.font-weight-low {
+    font-weight: var(--weight-low);
+}
+
+
+/* Global Font Size classes... */
+.font-size-large {
+    font-size: var(--size-large);
+}
+
+.font-size-medium {
+    font-size: var(--size-medium);
+}
+
+.font-size-small {
+    font-size: var(--size-small);
+}
+
+
+/* Global Background classes... */
+.bg-transparent {
+    background: var(--color-transparent) !important;
+}
+
+.bg-primary {
+    background: var(--color-primary) !important;
+}
+
+.bg-secondary {
+    background: var(--color-secondary) !important;
+}
+
+.bg-light {
+    background: var(--color-light) !important;
+}
+
+.bg-dark {
+    background: var(--color-dark) !important;
+}
+
+.bg-grey {
+    background: var(--color-grey) !important;
+}
+
+.bg-danger {
+    background: var(--color-danger) !important;
+}
+
+.bg-success {
+    background: var(--color-success) !important;
+}
+
+
+/* Global Font color classes... */
+.text-primary {
+    color: var(--color-primary) !important;
+}
+
+.text-secondary {
+    color: var(--color-secondary) !important;
+}
+
+.text-light {
+    color: var(--color-light) !important;
+}
+
+.text-dark {
+    color: var(--color-dark) !important;
+}
+
+.text-grey {
+    color: var(--color-grey) !important;
+}
+
+.text-danger {
+    color: var(--color-danger) !important;
+}
+
+.text-success {
+    color: var(--color-success) !important;
+}
+
+
+/* Global Padding classes... */
+.p-1 {
+    padding: var(--p-1);
+}
+
+.px-1 {
+    padding-left: var(--p-1);
+    padding-right: var(--p-1);
+}
+
+.py-1 {
+    padding-top: var(--p-1);
+    padding-bottom: var(--p-1);
+}
+
+.p-2 {
+    padding: var(--p-2);
+}
+
+.px-2 {
+    padding-left: var(--p-2);
+    padding-right: var(--p-2);
+}
+
+.py-2 {
+    padding-top: var(--p-2);
+    padding-bottom: var(--p-2);
+}
+
+.p-3 {
+    padding: var(--p-3);
+}
+
+.px-3 {
+    padding-left: var(--p-3);
+    padding-right: var(--p-3);
+}
+
+.py-3 {
+    padding-top: var(--p-3);
+    padding-bottom: var(--p-3);
+}
+
+.p-4 {
+    padding: var(--p-4);
+}
+
+.px-4 {
+    padding-left: var(--p-4);
+    padding-right: var(--p-4);
+}
+
+.py-4 {
+    padding-top: var(--p-4);
+    padding-bottom: var(--p-4);
+}
+
+.p-5 {
+    padding: var(--p-5);
+}
+
+.px-5 {
+    padding-left: var(--p-5);
+    padding-right: var(--p-5);
+}
+
+.py-5 {
+    padding-top: var(--p-5);
+    padding-bottom: var(--p-5);
+}
+
+
+/* Global Margin classes... */
+.m-1 {
+    margin: var(--m-1);
+}
+
+.mr-1 {
+    margin-right: var(--m-1);
+}
+
+.mx-1 {
+    margin-left: var(--m-1);
+    margin-right: var(--m-1);
+}
+
+.my-1 {
+    margin-top: var(--m-1);
+    margin-bottom: var(--m-1);
+}
+
+.m-2 {
+    margin: var(--m-2);
+}
+
+.mx-2 {
+    margin-left: var(--m-2);
+    margin-right: var(--m-2);
+}
+
+.my-2 {
+    margin-top: var(--m-2);
+    margin-bottom: var(--m-2);
+}
+
+.m-3 {
+    margin: var(--m-3);
+}
+
+.mx-3 {
+    margin-left: var(--m-3);
+    margin-right: var(--m-3);
+}
+
+.my-3 {
+    margin-top: var(--m-3);
+    margin-bottom: var(--m-3);
+}
+
+.m-4 {
+    margin: var(--m-4);
+}
+
+.mx-4 {
+    margin-left: var(--m-4);
+    margin-right: var(--m-4);
+}
+
+.my-4 {
+    margin-top: var(--m-4);
+    margin-bottom: var(--m-4);
+}
+
+.m-5 {
+    margin: var(--m-5);
+}
+
+.mx-5 {
+    margin-left: var(--m-5);
+    margin-right: var(--m-5);
+}
+
+.my-5 {
+    margin-top: var(--m-5);
+    margin-bottom: var(--m-5);
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* Global flex related classes...*/
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-item-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.f-1 {
+    flex: var(--flex-1);
+}
+
+.f-2 {
+    flex: var(--flex-2);
+}
+
+.f-3 {
+    flex: var(--flex-3);
+}
+
+.f-4 {
+    flex: var(--flex-4);
+}
+
+.f-5 {
+    flex: var(--flex-5);
+}
+
+.f-6 {
+    flex: var(--flex-6);
+}
+
+.f-7 {
+    flex: var(--flex-7);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+@font-face {
+    font-family: 'Notification';
+    src: url("/fonts/notification.eot?s3g3t9");
+    src: url("/fonts/notification.eot?#iefixs3g3t9") format("embedded-opentype"),
+    url("/fonts/notification.woff?s3g3t9") format("woff"),
+    url("/fonts/notification.ttf?s3g3t9") format("truetype"),
+    url("/fonts/notification.svg?s3g3t9#notification") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.notification-container {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 2rem;
+    right: 0;
+    z-index: 999999;
+    width: 320px;
+    padding: 0px 15px;
+    max-height: calc(100% - 30px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.notification {
+    box-sizing: border-box;
+    padding: 15px 15px 15px 58px;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #ccc;
+    box-shadow: 0 0 12px #999;
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 1.2em;
+    position: relative;
+    opacity: 0.9;
+    margin-top: 15px;
+}
+
+.notification .title {
+    font-size: 1em;
+    line-height: 1.2em;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.notification:hover, .notification:focus {
+    opacity: 1;
+}
+
+.notification-enter {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+}
+
+.notification-enter.notification-enter-active {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.4s;
+}
+
+.notification-leave {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+}
+
+.notification-leave.notification-leave-active {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+    transition: all 0.4s;
+}
+
+.notification:before {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    margin-top: -14px;
+    display: block;
+    font-family: 'Notification';
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+    text-align: center;
+    line-height: 28px;
+}
+
+.notification-info {
+    background-color: var(--color-primary);
+}
+
+.notification-info:before {
+    content: "😊";
+}
+
+.notification-success {
+    background-color: var(--color-success);
+}
+
+.notification-success:before {
+    content: "👍";
+}
+
+.notification-warning {
+    background-color: #f89406;
+}
+
+.notification-warning:before {
+    content: "⚠️";
+}
+
+.notification-error {
+    background-color: var(--color-danger);
+}
+
+.notification-error:before {
+    content: "🚫";
+}

@@ -1,0 +1,13 @@
+.header {
+    font-size: var(--size-large);
+    padding: var(--rem-1-0) var(--rem-2-0);
+    color: var(--color-primary);
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

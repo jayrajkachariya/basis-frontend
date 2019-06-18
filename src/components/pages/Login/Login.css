@@ -1,0 +1,24 @@
+.input {
+    width: 100%;
+    border: var(--border) var(--color-light);
+    box-shadow: var(--box-shadow);
+    font-size: var(--size-medium);
+    padding: var(--rem-0-7);
+    background: var(--color-light);
+    border-radius: var(--rem-0-2);
+    display: block;
+    margin: var(--rem-0-7) auto;
+    outline: none;
+}
+
+.login-window {
+    width: 50%;
+    max-width: 600px;
+}
+
+.alert {
+    font-size: var(--size-medium);
+    font-weight: var(--weight-low);
+    color: var(--color-danger);
+    text-align: right;
+}
